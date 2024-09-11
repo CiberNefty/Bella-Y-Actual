@@ -1,5 +1,5 @@
 # INSERCIONES TABLAS DE BELLA Y ACTUAL
-USE Bella_y_actual_V2;
+USE Bella_y_actual_V3;
 # TABLA EMPRESAS_PROVEEDORAS
 INSERT INTO EMPRESAS_PROVEEDORAS (Id_Empresas_proveedoras, Nombre, Encargado_Despacho, Telefono_Empresa, Direccion_Empresa) VALUES (1, 'Yellow', "Daniel Gomez", 0000001,'Direccion 1');
 INSERT INTO EMPRESAS_PROVEEDORAS (Nombre, Encargado_Despacho, Telefono_Empresa, Direccion_Empresa) VALUES ('CAT', "Andrea Hurtado", 0000002,'Direccion 2');
@@ -13,10 +13,9 @@ INSERT INTO EMPRESAS_PROVEEDORAS (Nombre, Encargado_Despacho, Telefono_Empresa, 
 INSERT INTO EMPRESAS_PROVEEDORAS (Nombre, Encargado_Despacho, Telefono_Empresa, Direccion_Empresa) VALUES ('NIVEA', "Felipe Vera", 0000010,'Direccion 10');
 
 # TABLA PROVEEDOR
-INSERT INTO `bella_y_actual_V2`.`proveedor`(`Id_Proveedor`,`Cedula`,`Nombre_Prove`,`Apellido_Prov`,`Telefono_Prov`,`Id_Empresas_proveedoras`)VALUES(1,001,'Esteban',"Perez",101,1);
-INSERT INTO `bella_y_actual_V2`.`proveedor`(`Id_Proveedor`,`Cedula`,`Nombre_Prove`,`Apellido_Prov`,`Telefono_Prov`,`Id_Empresas_proveedoras`)VALUES(2,002,'Jose',"Jimeza",101,1);
+INSERT INTO `bella_y_actual_V3`.`proveedor`(`Id_Proveedor`,`Cedula`,`Nombre_Prove`,`Apellido_Prov`,`Telefono_Prov`,`Id_Empresas_proveedoras`)VALUES(1,001,'Esteban',"Perez",101,1);
+INSERT INTO `bella_y_actual_V3`.`proveedor`(`Id_Proveedor`,`Cedula`,`Nombre_Prove`,`Apellido_Prov`,`Telefono_Prov`,`Id_Empresas_proveedoras`)VALUES(2,002,'Jose',"Jimeza",101,1);
 
--- ALTER TABLE  proveedor MODIFY COLUMN Telefono_Prov VARCHAR(25);
 INSERT INTO proveedor (Id_Proveedor, Cedula, Nombre_Prove, Apellido_Prov, Telefono_Prov, Id_Empresas_proveedoras) VALUES
 (3, '123456789', 'Luis', 'García', '+57 300 123 4567', 1),
 (4, '987654321', 'Ana', 'Martínez', '+57 300 234 5678', 2),
@@ -107,12 +106,11 @@ INSERT INTO Subcategoria (Id_Subcategoria, Id_Categoria, Nombre, Descripcion) VA
 (55, 6, 'Cuidado de la piel complementario', 'Productos adicionales que complementan las rutinas de cuidado de la piel.'),
 (56, 6, 'Accesorios para el cabello', 'Productos y herramientas para el cuidado y estilizado del cabello.');
 
--- select * from Rol;
+
 INSERT INTO rol (Id_Rol, Nombre, Descripcion) VALUES 
 (1, "Administrador", "Tiene acceso a todas las funcionalidades del sistema"),
 (2, "Vendedor", "Tiene acceso al inventario, limitado a modificaciones");
 
--- select * from Empleado;
 INSERT INTO empleado (Id_Empleado, Nombres, Apellidos, Correo_Electronico, Telefono, Fecha_Contrato_Inicio, Fecha_Contrato_Finalizado, Id_Rol) VALUES
 (1, "Nubia", "Arias Quevedo", "Nubia.arias@gmail.com", 31685947, "1999-11-25", "2060-02-01" , 1),
 (2, "Laura Valentina", "Medina Arias", "laura@hotmail.com", 5641636, "2010-10-02", "2060-02-01" , 2), 
@@ -135,68 +133,68 @@ INSERT INTO cliente (Id_Cliente, Nombres_Cliente, Apellidos_Cliente, Cedula, Tel
 
 ## TABLA PRODUCTOS
 INSERT INTO Producto (Nombre_Prod, Id_Subcategoria, Medida_Prod, Unidad_Medida_Prod, Costo_Prod, Iva_Prod, Porcentaje_Ganancia, Unidades_Totales_Prod, Marca_Prod, Estado, Id_Proveedor) VALUES
-('Shampoo Revitalizante', 1, 500, 'Mililitros', 20000, 19.00, 15.00, 100, 'Garnier', 'Activo', 1),
-('Crema Facial Hidratante', 14, 50, 'Mililitros', 15000, 19.00, 20.00, 200, 'Nivea', 'En stock', 2),
-('Gel de Baño Exfoliante', 30, 300, 'Mililitros', 12000, 16.00, 18.00, 150, 'Dove', 'Desabastecido', 3),
-('Crema para Manos Nutritiva', 42, 100, 'Mililitros', 10000, 10.00, 25.00, 120, 'L’Occitane', 'Activo', 4),
-('Esmalte de Uñas Brillante', 47, 15, 'Mililitros', 8000, 8.00, 30.00, 250, 'Maybelline', 'En stock', 5),
-('Bálsamo Labial Hidratante', 52, 4, 'Gramos', 6000, 10.00, 35.00, 300, 'Carmex', 'Activo', 6),
-('Acondicionador Reparador', 1, 400, 'Mililitros', 22000, 19.00, 12.00, 80, 'Pantene', 'Desabastecido', 1),
-('Limpiador Facial Antimanchas', 14, 150, 'Mililitros', 18000, 19.00, 22.00, 90, 'La Roche-Posay', 'En stock', 2),
-('Crema Corporal Hidratante', 30, 500, 'Mililitros', 25000, 16.00, 17.00, 110, 'Eucerin', 'Activo', 3),
-('Crema para Pies Reparadora', 47, 150, 'Mililitros', 12000, 12.00, 20.00, 130, 'Neutrogena', 'Desabastecido', 4),
-('Gel de Baño Relax', 30, 200, 'Mililitros', 14000, 15.00, 18.00, 140, 'Vichy', 'En stock', 5),
-('Serum Antiedad', 14, 30, 'Mililitros', 35000, 19.00, 25.00, 60, 'Estée Lauder', 'Activo', 6),
-('Exfoliante Corporal Natural', 30, 250, 'Mililitros', 16000, 18.00, 20.00, 70, 'The Body Shop', 'Desabastecido', 7),
-('Crema para Ojos Revitalizante', 14, 15, 'Mililitros', 22000, 19.00, 30.00, 50, 'Clinique', 'En stock', 1),
-('Jabón de Manos Antibacterial', 42, 300, 'Mililitros', 10000, 12.00, 15.00, 80, 'Dettol', 'Activo', 2),
-('Cremosa Facial Calmante', 14, 100, 'Mililitros', 18000, 19.00, 22.00, 75, 'Avene', 'Desabastecido', 3),
-('Body Mist Floral', 30, 200, 'Mililitros', 12000, 10.00, 28.00, 100, 'Victoria’s Secret', 'En stock', 4),
-('Mascarilla Capilar Reparadora', 1, 250, 'Mililitros', 22000, 18.00, 20.00, 60, 'Redken', 'Activo', 5),
-('Crema Anti Estrías', 30, 150, 'Mililitros', 18000, 16.00, 25.00, 70, 'Mustela', 'Desabastecido', 6),
-('Desodorante Spray', 30, 150, 'Mililitros', 9000, 12.00, 15.00, 80, 'Rexona', 'En stock', 7),
-('Crema de Noche Regeneradora', 14, 50, 'Mililitros', 25000, 19.00, 28.00, 55, 'L’Oréal', 'Activo', 1),
-('Pasta Dental Blanqueadora', 52, 120, 'Mililitros', 7000, 10.00, 12.00, 150, 'Sensodyne', 'Desabastecido', 2),
-('Serum Hidratante Intensivo', 14, 30, 'Mililitros', 28000, 19.00, 30.00, 50, 'Neutrogena', 'En stock', 3),
-('Crema Hidratante para Hombre', 30, 100, 'Mililitros', 15000, 14.00, 20.00, 80, 'Nivea', 'Activo', 4),
-('Jabón Corporal Nutritivo', 30, 250, 'Gramos', 9000, 12.00, 15.00, 100, 'Dove', 'Desabastecido', 5),
-('Crema para Cutículas', 42, 50, 'Mililitros', 8000, 10.00, 18.00, 90, 'Sally Hansen', 'En stock', 6),
-('Esmalte de Uñas en Gel', 47, 10, 'Mililitros', 9000, 12.00, 22.00, 100, 'O.P.I', 'Activo', 7),
-('Cera Depilatoria en Frío', 52, 200, 'Gramos', 12000, 10.00, 18.00, 75, 'Veet', 'Desabastecido', 1),
-('Aceite de Argan', 14, 50, 'Mililitros', 27000, 18.00, 25.00, 60, 'Moroccanoil', 'En stock', 2),
-('Desmaquillante Facial', 14, 200, 'Mililitros', 16000, 19.00, 20.00, 70, 'Bioderma', 'Activo', 3),
-('Crema Corporal Anticelulítica', 30, 200, 'Mililitros', 20000, 16.00, 22.00, 90, 'Elancyl', 'Desabastecido', 4),
-('Loción Hidratante para Pies', 47, 150, 'Mililitros', 11000, 14.00, 18.00, 80, 'Scholl', 'En stock', 5),
-('Crema de Manos Hidratante', 42, 100, 'Mililitros', 9000, 10.00, 15.00, 100, 'Nivea', 'Activo', 6),
-('Gel Facial Astringente', 14, 100, 'Mililitros', 14000, 18.00, 22.00, 90, 'Vichy', 'Desabastecido', 7),
-('Tónico Facial Revitalizante', 14, 200, 'Mililitros', 17000, 19.00, 25.00, 70, 'La Roche-Posay', 'En stock', 1),
-('Crema para el Contorno de Ojos', 14, 15, 'Mililitros', 22000, 19.00, 30.00, 60, 'Clinique', 'Activo', 2),
-('Esmalte de Uñas Mate', 47, 15, 'Mililitros', 10000, 10.00, 25.00, 130, 'Revlon', 'Desabastecido', 3),
-('Jabón Facial Purificante', 14, 100, 'Gramos', 14000, 15.00, 18.00, 80, 'Neutrogena', 'En stock', 4),
-('Gel para Afeitar', 30, 150, 'Mililitros', 10000, 12.00, 20.00, 90, 'Gillette', 'Activo', 5),
-('Crema de Manos Hidratante', 42, 100, 'Mililitros', 9000, 10.00, 15.00, 100, 'Nivea', 'Desabastecido', 6),
-('Loción Anticelulítica', 30, 200, 'Mililitros', 18000, 14.00, 22.00, 70, 'L’Oréal', 'En stock', 7),
-('Exfoliante Facial Suave', 14, 75, 'Mililitros', 12000, 12.00, 20.00, 90, 'Eucerin', 'Activo', 1),
-('Bálsamo para Labios', 52, 10, 'Gramos', 7000, 10.00, 15.00, 150, 'Burt’s Bees', 'Desabastecido', 2),
-('Cremosa Facial Calmante', 14, 100, 'Mililitros', 17000, 19.00, 22.00, 60, 'Vichy', 'En stock', 3),
-('Tónico Facial Hidratante', 14, 200, 'Mililitros', 19000, 19.00, 25.00, 50, 'La Roche-Posay', 'Activo', 4),
-('Exfoliante Corporal con Sal', 30, 250, 'Gramos', 15000, 16.00, 20.00, 80, 'The Body Shop', 'Desabastecido', 5),
-('Gel Hidratante para Manos', 42, 100, 'Mililitros', 11000, 12.00, 18.00, 70, 'Eucerin', 'En stock', 6),
-('Crema Reparadora para Pies', 47, 150, 'Mililitros', 13000, 14.00, 20.00, 90, 'Neutrogena', 'Activo', 7),
-('Serum Facial Iluminador', 14, 30, 'Mililitros', 29000, 19.00, 30.00, 55, 'Clinique', 'Desabastecido', 1),
-('Jabón Facial de Miel', 14, 100, 'Gramos', 12000, 15.00, 18.00, 65, 'The Body Shop', 'En stock', 2),
-('Crema de Manos Protector', 42, 100, 'Mililitros', 9500, 10.00, 20.00, 85, 'Neutrogena', 'Activo', 3),
-('Esmalte de Uñas Hidratante', 47, 10, 'Mililitros', 8500, 10.00, 25.00, 100, 'Maybelline', 'Desabastecido', 4),
-('Crema Corporal Suavizante', 30, 500, 'Mililitros', 23000, 16.00, 22.00, 95, 'Nivea', 'En stock', 5),
-('Desmaquillante de Ojos', 14, 125, 'Mililitros', 14000, 19.00, 22.00, 70, 'Bioderma', 'Activo', 6),
-('Gel para Manos Hidratante', 42, 200, 'Mililitros', 12000, 12.00, 18.00, 75, 'Dettol', 'Desabastecido', 7),
-('Loción Antimanchas Corporal', 30, 250, 'Mililitros', 21000, 14.00, 25.00, 85, 'Eucerin', 'En stock', 1),
-('Aceite Esencial de Lavanda', 52, 30, 'Mililitros', 15000, 10.00, 30.00, 60, 'L’Occitane', 'Activo', 2),
-('Mascarilla Facial Purificante', 14, 75, 'Mililitros', 17000, 19.00, 20.00, 50, 'La Roche-Posay', 'Desabastecido', 3),
-('Crema Hidratante para Cuerpo', 30, 500, 'Mililitros', 24000, 16.00, 22.00, 90, 'Vichy', 'En stock', 4),
-('Crema para Ojos Antiarrugas', 14, 15, 'Mililitros', 24000, 19.00, 28.00, 55, 'Clinique', 'Activo', 5),
-('Jabón Corporal Exfoliante', 30, 200, 'Gramos', 13000, 14.00, 20.00, 75, 'Dove', 'Desabastecido', 6),
-('Crema para Cutículas Hidratante', 42, 30, 'Mililitros', 9000, 10.00, 15.00, 85, 'Sally Hansen', 'En stock', 7);
+('Shampoo Revitalizante', 1, 500, 'Mililitros', 20000, 0.19, 0.15, 100, 'Garnier', 'Activo', 1),
+('Crema Facial Hidratante', 14, 50, 'Mililitros', 15000, 0.19, 0.20, 200, 'Nivea', 'En stock', 2),
+('Gel de Baño Exfoliante', 30, 300, 'Mililitros', 12000, 0.16, 0.18, 150, 'Dove', 'Desabastecido', 3),
+('Crema para Manos Nutritiva', 42, 100, 'Mililitros', 10000, 0.10, 0.25, 120, 'L’Occitane', 'Activo', 4),
+('Esmalte de Uñas Brillante', 47, 15, 'Mililitros', 8000, 0.08, 0.30, 250, 'Maybelline', 'En stock', 5),
+('Bálsamo Labial Hidratante', 52, 4, 'Gramos', 6000, 0.1, 0.35, 300, 'Carmex', 'Activo', 6),
+('Acondicionador Reparador', 1, 400, 'Mililitros', 22000, 0.19, 0.12, 80, 'Pantene', 'Desabastecido', 1),
+('Limpiador Facial Antimanchas', 14, 150, 'Mililitros', 18000, 0.19, 0.22, 90, 'La Roche-Posay', 'En stock', 2),
+('Crema Corporal Hidratante', 30, 500, 'Mililitros', 25000, 0.16, 0.17, 110, 'Eucerin', 'Activo', 3),
+('Crema para Pies Reparadora', 47, 150, 'Mililitros', 12000, 0.12, 0.20, 130, 'Neutrogena', 'Desabastecido', 4),
+('Gel de Baño Relax', 30, 200, 'Mililitros', 14000, 0.15, 0.18, 140, 'Vichy', 'En stock', 5),
+('Serum Antiedad', 14, 30, 'Mililitros', 35000, 0.19, 0.25, 60, 'Estée Lauder', 'Activo', 6),
+('Exfoliante Corporal Natural', 30, 250, 'Mililitros', 16000, 0.18, 0.20, 70, 'The Body Shop', 'Desabastecido', 7),
+('Crema para Ojos Revitalizante', 14, 15, 'Mililitros', 22000, 0.19, 0.30, 50, 'Clinique', 'En stock', 1),
+('Jabón de Manos Antibacterial', 42, 300, 'Mililitros', 10000, 0.12, 0.15, 80, 'Dettol', 'Activo', 2),
+('Cremosa Facial Calmante', 14, 100, 'Mililitros', 18000, 0.19, 0.22, 75, 'Avene', 'Desabastecido', 3),
+('Body Mist Floral', 30, 200, 'Mililitros', 12000, 0.10, 0.28, 100, 'Victoria’s Secret', 'En stock', 4),
+('Mascarilla Capilar Reparadora', 1, 250, 'Mililitros', 22000, 0.18, 0.20, 60, 'Redken', 'Activo', 5),
+('Crema Anti Estrías', 30, 150, 'Mililitros', 18000, 0.16, 0.25, 70, 'Mustela', 'Desabastecido', 6),
+('Desodorante Spray', 30, 150, 'Mililitros', 9000, 0.12, 0.15, 80, 'Rexona', 'En stock', 7),
+('Crema de Noche Regeneradora', 14, 50, 'Mililitros', 25000, 0.19, 0.28, 55, 'L’Oréal', 'Activo', 1),
+('Pasta Dental Blanqueadora', 52, 120, 'Mililitros', 7000, 0.10, 0.12, 150, 'Sensodyne', 'Desabastecido', 2),
+('Serum Hidratante Intensivo', 14, 30, 'Mililitros', 28000, 0.19, 0.30, 50, 'Neutrogena', 'En stock', 3),
+('Crema Hidratante para Hombre', 30, 100, 'Mililitros', 15000, 0.14, 0.20, 80, 'Nivea', 'Activo', 4),
+('Jabón Corporal Nutritivo', 30, 250, 'Gramos', 9000, 0.12, 0.15, 100, 'Dove', 'Desabastecido', 5),
+('Crema para Cutículas', 42, 50, 'Mililitros', 8000, 0.10, 0.18, 90, 'Sally Hansen', 'En stock', 6),
+('Esmalte de Uñas en Gel', 47, 10, 'Mililitros', 9000, 0.12, 0.22, 100, 'O.P.I', 'Activo', 7),
+('Cera Depilatoria en Frío', 52, 200, 'Gramos', 12000, 0.10, 0.18, 75, 'Veet', 'Desabastecido', 1),
+('Aceite de Argan', 14, 50, 'Mililitros', 27000, 0.18, 0.25, 60, 'Moroccanoil', 'En stock', 2),
+('Desmaquillante Facial', 14, 200, 'Mililitros', 16000, 0.19, 0.20, 70, 'Bioderma', 'Activo', 3),
+('Crema Corporal Anticelulítica', 30, 200, 'Mililitros', 20000, 0.16, 0.22, 90, 'Elancyl', 'Desabastecido', 4),
+('Loción Hidratante para Pies', 47, 150, 'Mililitros', 11000, 0.14, 0.18, 80, 'Scholl', 'En stock', 5),
+('Crema de Manos Hidratante', 42, 100, 'Mililitros', 9000, 0.10, 0.15, 100, 'Nivea', 'Activo', 6),
+('Gel Facial Astringente', 14, 100, 'Mililitros', 14000, 0.18, 0.22, 90, 'Vichy', 'Desabastecido', 7),
+('Tónico Facial Revitalizante', 14, 200, 'Mililitros', 17000, 0.19, 0.25, 70, 'La Roche-Posay', 'En stock', 1),
+('Crema para el Contorno de Ojos', 14, 15, 'Mililitros', 22000, 0.19, 0.30, 60, 'Clinique', 'Activo', 2),
+('Esmalte de Uñas Mate', 47, 15, 'Mililitros', 10000, 0.10, 0.25, 130, 'Revlon', 'Desabastecido', 3),
+('Jabón Facial Purificante', 14, 100, 'Gramos', 14000, 0.15, 0.18, 80, 'Neutrogena', 'En stock', 4),
+('Gel para Afeitar', 30, 150, 'Mililitros', 10000, 0.12, 0.20, 90, 'Gillette', 'Activo', 5),
+('Crema de Manos Hidratante', 42, 100, 'Mililitros', 9000, 0.10, 0.15, 100, 'Nivea', 'Desabastecido', 6),
+('Loción Anticelulítica', 30, 200, 'Mililitros', 18000, 0.14, 0.22, 70, 'L’Oréal', 'En stock', 7),
+('Exfoliante Facial Suave', 14, 75, 'Mililitros', 12000, 0.12, 0.20, 90, 'Eucerin', 'Activo', 1),
+('Bálsamo para Labios', 52, 10, 'Gramos', 7000, 0.10, 0.15, 150, 'Burt’s Bees', 'Desabastecido', 2),
+('Cremosa Facial Calmante', 14, 100, 'Mililitros', 17000, 0.19, 0.22, 60, 'Vichy', 'En stock', 3),
+('Tónico Facial Hidratante', 14, 200, 'Mililitros', 19000, 0.19, 0.25, 50, 'La Roche-Posay', 'Activo', 4),
+('Exfoliante Corporal con Sal', 30, 250, 'Gramos', 15000, 0.16, 0.20, 80, 'The Body Shop', 'Desabastecido', 5),
+('Gel Hidratante para Manos', 42, 100, 'Mililitros', 11000, 0.12, 0.18, 70, 'Eucerin', 'En stock', 6),
+('Crema Reparadora para Pies', 47, 150, 'Mililitros', 13000, 0.14, 0.2, 90, 'Neutrogena', 'Activo', 7),
+('Serum Facial Iluminador', 14, 30, 'Mililitros', 29000, 0.19, 0.3, 55, 'Clinique', 'Desabastecido', 1),
+('Jabón Facial de Miel', 14, 100, 'Gramos', 12000, 0.15, 0.18, 65, 'The Body Shop', 'En stock', 2),
+('Crema de Manos Protector', 42, 100, 'Mililitros', 9500, 0.1, 0.2, 85, 'Neutrogena', 'Activo', 3),
+('Esmalte de Uñas Hidratante', 47, 10, 'Mililitros', 8500, 0.1, 0.25, 100, 'Maybelline', 'Desabastecido', 4),
+('Crema Corporal Suavizante', 30, 500, 'Mililitros', 23000, 0.16, 0.22, 95, 'Nivea', 'En stock', 5),
+('Desmaquillante de Ojos', 14, 125, 'Mililitros', 14000, 0.19, 0.22, 70, 'Bioderma', 'Activo', 6),
+('Gel para Manos Hidratante', 42, 200, 'Mililitros', 12000, 0.12, 0.18, 75, 'Dettol', 'Desabastecido', 7),
+('Loción Antimanchas Corporal', 30, 250, 'Mililitros', 21000, 0.14, 0.25, 85, 'Eucerin', 'En stock', 1),
+('Aceite Esencial de Lavanda', 52, 30, 'Mililitros', 15000, 0.1, 0.30, 60, 'L’Occitane', 'Activo', 2),
+('Mascarilla Facial Purificante', 14, 75, 'Mililitros', 17000, 0.19, 0.2, 50, 'La Roche-Posay', 'Desabastecido', 3),
+('Crema Hidratante para Cuerpo', 30, 500, 'Mililitros', 24000, 0.16, 0.22, 90, 'Vichy', 'En stock', 4),
+('Crema para Ojos Antiarrugas', 14, 15, 'Mililitros', 24000, 0.19, 0.28, 55, 'Clinique', 'Activo', 5),
+('Jabón Corporal Exfoliante', 30, 200, 'Gramos', 13000, 0.14, 0.2, 75, 'Dove', 'Desabastecido', 6),
+('Crema para Cutículas Hidratante', 42, 30, 'Mililitros', 9000, 0.1, 0.15, 85, 'Sally Hansen', 'En stock', 7);
 
 ## TABLA VENTA
 INSERT INTO Venta (Fecha_Venta, Total_Venta, Id_Empleado) VALUES

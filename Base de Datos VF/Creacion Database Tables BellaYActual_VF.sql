@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS Bella_Y_Actual_V2;
-CREATE DATABASE IF NOT EXISTS Bella_Y_Actual_V2;
-USE Bella_Y_Actual_V2;
+DROP DATABASE IF EXISTS Bella_Y_Actual_V3;
+CREATE DATABASE IF NOT EXISTS Bella_Y_Actual_V3;
+USE Bella_Y_Actual_V3;
 CREATE TABLE Empresas_Proveedoras (
   Id_Empresas_proveedoras INT AUTO_INCREMENT comment 'Indicativo por cada empresa', 
   Nombre                  VARCHAR(255) comment 'Este campo sirve  para guardar el nombre de la empresa', 
@@ -93,9 +93,9 @@ CREATE TABLE Producto (
   Id_Subcategoria 			INT NOT NULL COMMENT 'Aqui es la llave forania donde indica que tipo de categoria pertenece el producto', 
   Medida_Prod           INT COMMENT 'Es el tipo de unidad de medida el cual indica cuanta cantidad tiene el producto.', 
   Unidad_Medida_Prod    VARCHAR(50) NOT NULL COMMENT 'Este campo indica en que tamaño esta indicado el producto', 
-  Costo_Prod            DECIMAL(19, 0), 
-  Iva_Prod              DECIMAL(5,2) COMMENT 'Este campo indica cuanto el impuesto que se nos cobro por la compra del producto', 
-  Porcentaje_Ganancia   DECIMAL(5,2) COMMENT 'Este campo nos indica el porcentaje de ganancia que le vamos a ganar por cada producto.', 
+  Costo_Prod            DECIMAL(19,0), 
+  Iva_Prod              DECIMAL(3,2) COMMENT 'Este campo indica cuanto el impuesto que se nos cobro por la compra del producto', 
+  Porcentaje_Ganancia   DECIMAL(3,2) COMMENT 'Este campo nos indica el porcentaje de ganancia que le vamos a ganar por cada producto.', 
   Precio_Unidad_Prod    DECIMAL(19, 2) GENERATED ALWAYS AS (((Costo_Prod * Iva_Prod) + (Costo_Prod * Porcentaje_Ganancia) + Costo_Prod)) STORED comment 'Este campo me indica a como va a quedar el producto haciendo la operacion matematica', 
   Unidades_Totales_Prod INT NOT NULL comment 'Este campo me dice cuantos productos existen.', 
   Marca_Prod            VARCHAR(150) NOT NULL comment 'Este campo me informa de que empresa es el producto.', 
